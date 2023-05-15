@@ -1,6 +1,7 @@
+import Button from '../Button'
 import Tag from '../Tag'
+
 import {
-  Button,
   Card,
   CardContent,
   Description,
@@ -16,17 +17,10 @@ type Props = {
   rating: string
   infos: string[]
   description: string
-  onClick?: () => void
+  to?: string
 }
 
-const Product = ({
-  title,
-  image,
-  rating,
-  infos,
-  description,
-  onClick
-}: Props) => {
+const Product = ({ title, image, rating, infos, description, to }: Props) => {
   return (
     <Card>
       <img src={image} />
@@ -44,7 +38,9 @@ const Product = ({
           ))}
         </Infos>
         <Description>{description}</Description>
-        <Button onClick={onClick}>Saiba mais</Button>
+        <Button type="button" to={'/perfil'}>
+          Saiba mais
+        </Button>
       </CardContent>
     </Card>
   )

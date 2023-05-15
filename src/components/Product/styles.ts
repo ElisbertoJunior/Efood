@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background-color: ${colors.cardColor};
@@ -29,16 +30,7 @@ export const Description = styled.p`
   color: ${colors.roseColor};
   margin: 16px 0;
 `
-export const Button = styled.button`
-  border: none;
-  background-color: ${colors.roseColor};
-  padding: 4px 6px;
-  color: ${colors.creamColor};
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 16px;
-  cursor: pointer;
-`
+
 export const Rating = styled.div`
   display: flex;
   align-items: center;

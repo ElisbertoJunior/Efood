@@ -63,7 +63,7 @@ const mainRestaurants: Restaurant[] = [
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header type="home" />
       <ProductsList restaurants={mainRestaurants} />
     </>
   )

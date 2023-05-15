@@ -1,13 +1,14 @@
 import { BrowserRouter } from 'react-router-dom'
 import GlobalStyle from './styles'
-import Home from './pages/Home'
+
 import Footer from './components/Footer'
+import Routes from './Routes'
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Home />
+      <Routes />
       <Footer />
     </BrowserRouter>
   )

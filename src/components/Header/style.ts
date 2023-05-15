@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.header`
   height: 360px;
@@ -15,4 +16,23 @@ export const Text = styled.h1`
   color: ${colors.roseColor};
   line-height: 42px;
   text-align: center;
+`
+export const HeaderPerfil = styled(Container)`
+  height: 163px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Links = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+`
+export const LinkItem = styled(Link)`
+  font-size: 18px;
+  color: ${colors.roseColor};
+  line-height: 21px;
+  font-weight: bold;
 `
