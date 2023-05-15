@@ -1,12 +1,26 @@
+import Restaurant from '../../models/Restautant'
 import Product from '../Product'
 import { ProductsContainer, ProductsContent } from './styles'
 
-const ProductsList = () => {
+type Props = {
+  restaurants: Restaurant[]
+}
+
+const ProductsList = ({ restaurants }: Props) => {
   return (
     <ProductsContainer>
       <div className="container">
         <ProductsContent>
-          <Product />
+          {restaurants.map((restaurant) => (
+            <Product
+              key={restaurant.id}
+              title={restaurant.title}
+              image={restaurant.image}
+              rating={restaurant.hating}
+              infos={restaurant.infos}
+              description={restaurant.description}
+            />
+          ))}
         </ProductsContent>
       </div>
     </ProductsContainer>

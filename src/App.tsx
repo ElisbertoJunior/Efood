@@ -1,14 +1,15 @@
-import Header from './components/Header'
-import ProductsList from './components/ProductsList'
+import { BrowserRouter } from 'react-router-dom'
 import GlobalStyle from './styles'
+import Home from './pages/Home'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <div className="App">
+    <BrowserRouter>
       <GlobalStyle />
-      <Header />
-      <ProductsList />
-    </div>
+      <Home />
+      <Footer />
+    </BrowserRouter>
   )
 }
 

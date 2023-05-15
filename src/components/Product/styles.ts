@@ -3,6 +3,7 @@ import { colors } from '../../styles'
 
 export const Card = styled.div`
   background-color: ${colors.cardColor};
+  position: relative;
 `
 export const HatingContent = styled.div`
   display: flex;
@@ -36,9 +37,15 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: bold;
   line-height: 16px;
+  cursor: pointer;
 `
 export const Rating = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 0;
 `
