@@ -16,4 +16,5 @@ export const MenuListContent = styled(ProductsContent)`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 40px;
   grid-row-gap: 40px;
+  margin-top: 250px;
 `
