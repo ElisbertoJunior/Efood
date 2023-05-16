@@ -24,4 +24,5 @@ export const AddButton = styled.button`
   padding-top: 4px;
   padding-bottom: 4px;
   border: none;
+  cursor: pointer;
 `

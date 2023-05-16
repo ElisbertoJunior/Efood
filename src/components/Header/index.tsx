@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Container, HeaderPerfil, LinkItem, Links, Text } from './style'
+import {
+  Container,
+  HeaderPerfil,
+  HeaderPerfilContainer,
+  LinkItem,
+  Links,
+  Text
+} from './style'
 
 type Props = {
   type: 'home' | 'perfil'
@@ -19,7 +26,7 @@ const Header = ({ type }: Props) => {
 
   return (
     <HeaderPerfil style={{ backgroundImage: 'url("images/fundo.png")' }}>
-      <div className="container">
+      <HeaderPerfilContainer>
         <nav>
           <Links>
             <li>
@@ -38,7 +45,7 @@ const Header = ({ type }: Props) => {
             </li>
           </Links>
         </nav>
-      </div>
+      </HeaderPerfilContainer>
     </HeaderPerfil>
   )
 }

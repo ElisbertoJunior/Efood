@@ -28,11 +28,16 @@ export const HeaderPerfil = styled(Container)`
 export const Links = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `
 export const LinkItem = styled(Link)`
   font-size: 18px;
   color: ${colors.roseColor};
   line-height: 21px;
   font-weight: bold;
+`
+export const HeaderPerfilContainer = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 `

@@ -41,3 +41,18 @@ export const Infos = styled.div`
   top: 16px;
   right: 0;
 `
+export const CardMenu = styled.div`
+  background-color: ${colors.roseColor};
+  padding: 8px;
+  color: ${colors.creamColor};
+`
+export const TitleMenu = styled.h3`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+`
+export const MenuDescription = styled.p`
+  font-size: 14px;
+  line-height: 22px;
+  margin: 8px 0;
+`
