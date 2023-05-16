@@ -1,3 +1,4 @@
+import { Container } from './../Header/style'
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
@@ -21,6 +22,11 @@ export const BannerContainer = styled.div`
     left: 0;
     content: '';
     opacity: 0.4;
+  }
+
+  .container {
+    z-index: 1;
+    position: relative;
   }
 `
 export const TypeTitle = styled.h2`
