@@ -8,15 +8,23 @@ import {
   TitleMenu
 } from './style'
 import Product from '../Product'
-import Menus from '../../models/Menu'
+import close from '../../images/close.png'
+
 import { MenuItem } from '../../pages/Home'
 
 type Props = {
-  menuItens: Menus[]
+  menuItens: MenuItem[]
 }
 
 interface ModalState extends MenuItem {
   isVisible: boolean
+}
+
+export const priceFormat = (price = 0) => {
+  return new Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
 }
 
 const Menu = ({ menuItens }: Props) => {
@@ -26,7 +34,8 @@ const Menu = ({ menuItens }: Props) => {
     foto: '',
     nome: '',
     descricao: '',
-    preco: 0
+    preco: 0,
+    porcao: ''
   })
 
   const closeModal = () => {
@@ -36,7 +45,8 @@ const Menu = ({ menuItens }: Props) => {
       foto: '',
       nome: '',
       descricao: '',
-      preco: 0
+      preco: 0,
+      porcao: ''
     })
   }
 
@@ -49,23 +59,25 @@ const Menu = ({ menuItens }: Props) => {
               <li
                 key={item.id}
                 onClick={() => {
-                  return setModal({
+                  setModal({
                     isVisible: true,
-                    id: 0,
-                    foto: '',
-                    nome: '',
-                    descricao: '',
-                    preco: 0
+                    id: item.id,
+                    foto: item.foto,
+                    nome: item.nome,
+                    descricao: item.descricao,
+                    preco: item.preco,
+                    porcao: item.porcao
                   })
                 }}
               >
                 <Product
                   type="menu"
                   key={item.id}
-                  image={item.image}
-                  title={item.title}
-                  description={item.description}
-                  infos={[]}
+                  image={item.foto}
+                  title={item.nome}
+                  description={item.descricao}
+                  tipo={''}
+                  id={item.id}
                 />
               </li>
             ))}
@@ -75,25 +87,17 @@ const Menu = ({ menuItens }: Props) => {
       <Modal className={modal.isVisible ? 'visible' : ''}>
         <ModalContent className="container">
           <header>
-            <img onClick={closeModal} src={'images/close.png'} />
+            <img onClick={closeModal} src={close} />
           </header>
           <div className="content">
-            <img className="imageFood" src={'images/pizza.png'} />
+            <img className="imageFood" src={modal.foto} />
             <div>
-              <TitleMenu>Pizza</TitleMenu>
-              <MenuDescription>
-                A pizza Margherita é uma pizza clássica da culinária italiana,
-                reconhecida por sua simplicidade e sabor inigualável. Ela é
-                feita com uma base de massa fina e crocante, coberta com molho
-                de tomate fresco, queijo mussarela de alta qualidade, manjericão
-                fresco e azeite de oliva extra-virgem. A combinação de sabores é
-                perfeita, com o molho de tomate suculento e ligeiramente ácido,
-                o queijo derretido e cremoso e as folhas de manjericão frescas,
-                que adicionam um toque de sabor herbáceo. É uma pizza simples,
-                mas deliciosa, que agrada a todos os paladares e é uma ótima
-                opção para qualquer ocasião. Serve: de 2 a 3 pessoas
-              </MenuDescription>
-              <button>Adicionar ao carrinho - R$ 60,90</button>
+              <TitleMenu>{modal.nome}</TitleMenu>
+              <MenuDescription>{modal.descricao}</MenuDescription>
+              <MenuDescription>Serve: {modal.porcao}</MenuDescription>
+              <button>
+                Adicionar ao carrinho - {priceFormat(modal.preco)}
+              </button>
             </div>
           </div>
         </ModalContent>

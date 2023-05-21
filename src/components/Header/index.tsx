@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import {
   Container,
   HeaderPerfil,
@@ -8,6 +7,9 @@ import {
   Text
 } from './style'
 
+import fundo from '../../images/fundo.png'
+import logo from '../../images/logo.png'
+
 type Props = {
   type: 'home' | 'perfil'
 }
@@ -15,8 +17,8 @@ type Props = {
 const Header = ({ type }: Props) => {
   if (type === 'home') {
     return (
-      <Container style={{ backgroundImage: 'url("images/fundo.png")' }}>
-        <img height={58} width={125} src={'images/logo.png'} alt="Logo Efood" />
+      <Container style={{ backgroundImage: `url(${fundo})` }}>
+        <img height={58} width={125} src={logo} alt="Logo Efood" />
         <Text>
           Viva experiências gastronômicas <br /> no conforto da sua casa
         </Text>
@@ -25,7 +27,7 @@ const Header = ({ type }: Props) => {
   }
 
   return (
-    <HeaderPerfil style={{ backgroundImage: 'url("images/fundo.png")' }}>
+    <HeaderPerfil style={{ backgroundImage: `url(${fundo})` }}>
       <HeaderPerfilContainer>
         <nav>
           <Links>
@@ -33,12 +35,7 @@ const Header = ({ type }: Props) => {
               <LinkItem to={'/'}>Restaurantes</LinkItem>
             </li>
             <li>
-              <img
-                height={58}
-                width={125}
-                src={'images/logo.png'}
-                alt="Logo Efood"
-              />
+              <img height={58} width={125} src={logo} alt="Logo Efood" />
             </li>
             <li>
               <LinkItem to="#">0 produto(s) no carrinho</LinkItem>

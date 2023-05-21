@@ -2,7 +2,7 @@ import { AddButton, ButtonMore } from './styles'
 
 type Props = {
   type: 'button' | 'linkButton'
-  children: string
+  children: string | number
   to?: string
   onClick?: () => void
 }

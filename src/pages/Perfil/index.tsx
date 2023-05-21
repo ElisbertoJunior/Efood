@@ -1,60 +1,29 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
-import Menus from '../../models/Menu'
+
+import { Restaurant } from '../Home'
 import Menu from '../../components/Menu'
 
-const mainMenu: Menus[] = [
-  {
-    id: 1,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-
-  {
-    id: 2,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    title: 'Pizza Marguerita',
-    image: 'images/pizza.png',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  }
-]
-
 const Perfil = () => {
+  const { id } = useParams()
+
+  const [restaurant, setRestaurant] = useState<Restaurant>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurant(res))
+  }, [id])
+
+  if (!restaurant) return <h3>Carregando...</h3>
+
   return (
     <>
       <Header type="perfil" />
-      <Banner />
-      <Menu menuItens={mainMenu} />
+      <Banner restaurant={restaurant} />
+      <Menu menuItens={restaurant.cardapio} />
     </>
   )
 }

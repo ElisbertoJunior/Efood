@@ -1,23 +1,27 @@
 import { FooterContainer } from './styles'
+import logo from '../../images/logo.png'
+import insta from '../../images/insta.png'
+import face from '../../images/face.png'
+import twitter from '../../images/twitter.png'
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <img src={'images/logo.png'} alt="Logo Efood" />
+      <img src={logo} alt="Logo Efood" />
       <ul>
         <li>
           <a href="#">
-            <img src={'icons/insta.png'} />
+            <img src={insta} />
           </a>
         </li>
         <li>
           <a href="#">
-            <img src={'icons/face.png'} />
+            <img src={face} />
           </a>
         </li>
         <li>
           <a href="#">
-            <img src={'icons/twitter.png'} />
+            <img src={twitter} />
           </a>
         </li>
       </ul>

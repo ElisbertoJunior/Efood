@@ -18,17 +18,33 @@ type Props = {
   type: 'home' | 'menu'
   title: string
   image: string
-  rating?: string
-  infos: string[]
+  rating?: number
   description: string
-  to?: string
+  featured?: boolean
+  tipo: string
+  id: number
 }
 
-const Product = ({ title, image, rating, infos, description, type }: Props) => {
+const Product = ({
+  title,
+  image,
+  rating,
+  description,
+  type,
+  featured,
+  tipo,
+  id
+}: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 150) {
+      return description.slice(0, 150) + '...'
+    }
+  }
+
   if (type === 'home') {
     return (
       <Card>
-        <img src={image} />
+        <img height={217} width={472} src={image} />
         <CardContent>
           <HatingContent>
             <Title>{title}</Title>
@@ -38,12 +54,17 @@ const Product = ({ title, image, rating, infos, description, type }: Props) => {
             </Rating>
           </HatingContent>
           <Infos>
-            {infos.map((info) => (
-              <Tag key={info}>{info}</Tag>
-            ))}
+            {featured ? (
+              <>
+                <Tag key={'destaque'}>{'Destaque da semana'}</Tag>
+                <Tag key={tipo}>{tipo}</Tag>
+              </>
+            ) : (
+              <Tag key={tipo}>{tipo}</Tag>
+            )}
           </Infos>
-          <Description>{description}</Description>
-          <Button type="button" to={'/perfil'}>
+          <Description>{getDescription(description)}</Description>
+          <Button type="button" to={`/perfil/${id}`}>
             Saiba mais
           </Button>
         </CardContent>
@@ -53,9 +74,9 @@ const Product = ({ title, image, rating, infos, description, type }: Props) => {
 
   return (
     <CardMenu>
-      <img src={image} />
+      <img height={167} width={304} src={image} />
       <TitleMenu>{title}</TitleMenu>
-      <MenuDescription>{description}</MenuDescription>
+      <MenuDescription>{getDescription(description)}</MenuDescription>
       <Button type="linkButton">Adicionar ao carrinho</Button>
     </CardMenu>
   )
