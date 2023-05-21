@@ -1,9 +1,9 @@
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
-import ProductsList from '../../components/ProductsList'
-import Menu from '../../models/Menu'
+import Menus from '../../models/Menu'
+import Menu from '../../components/Menu'
 
-const mainMenu: Menu[] = [
+const mainMenu: Menus[] = [
   {
     id: 1,
     title: 'Pizza Marguerita',
@@ -54,7 +54,7 @@ const Perfil = () => {
     <>
       <Header type="perfil" />
       <Banner />
-      <ProductsList menuItens={mainMenu} type="menu" restaurants={[]} />
+      <Menu menuItens={mainMenu} />
     </>
   )
 }
