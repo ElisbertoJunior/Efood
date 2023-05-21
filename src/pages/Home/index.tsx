@@ -2,6 +2,14 @@ import Header from '../../components/Header'
 import ProductsList from '../../components/ProductsList'
 import Restaurant from '../../models/Restautant'
 
+export interface MenuItem {
+  id: number
+  foto: string
+  nome: string
+  descricao: string
+  preco: number
+}
+
 const mainRestaurants: Restaurant[] = [
   {
     id: 1,
