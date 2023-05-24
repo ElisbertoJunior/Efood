@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   MenuDescription,
   MenuListContent,
@@ -9,8 +10,8 @@ import {
 } from './style'
 import Product from '../Product'
 import close from '../../images/close.png'
-
 import { MenuItem } from '../../pages/Home'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
   menuItens: MenuItem[]
@@ -48,6 +49,14 @@ const Menu = ({ menuItens }: Props) => {
       preco: 0,
       porcao: ''
     })
+  }
+
+  const dispatch = useDispatch()
+
+  const addCart = () => {
+    dispatch(add(modal))
+    dispatch(open())
+    closeModal()
   }
 
   return (
@@ -95,7 +104,7 @@ const Menu = ({ menuItens }: Props) => {
               <TitleMenu>{modal.nome}</TitleMenu>
               <MenuDescription>{modal.descricao}</MenuDescription>
               <MenuDescription>Serve: {modal.porcao}</MenuDescription>
-              <button>
+              <button onClick={addCart}>
                 Adicionar ao carrinho - {priceFormat(modal.preco)}
               </button>
             </div>

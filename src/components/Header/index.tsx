@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Container,
   HeaderPerfil,
@@ -9,12 +10,17 @@ import {
 
 import fundo from '../../images/fundo.png'
 import logo from '../../images/logo.png'
+import { open } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
 
 type Props = {
   type: 'home' | 'perfil'
 }
 
 const Header = ({ type }: Props) => {
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
+
   if (type === 'home') {
     return (
       <Container style={{ backgroundImage: `url(${fundo})` }}>
@@ -38,7 +44,9 @@ const Header = ({ type }: Props) => {
               <img height={58} width={125} src={logo} alt="Logo Efood" />
             </li>
             <li>
-              <LinkItem to="#">0 produto(s) no carrinho</LinkItem>
+              <LinkItem onClick={() => dispatch(open())} to="#">
+                {items.length} produto(s) no carrinho
+              </LinkItem>
             </li>
           </Links>
         </nav>

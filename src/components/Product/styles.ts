@@ -45,6 +45,7 @@ export const CardMenu = styled.div`
   background-color: ${colors.roseColor};
   padding: 8px;
   color: ${colors.creamColor};
+  cursor: pointer;
 `
 export const TitleMenu = styled.h3`
   font-weight: bold;
