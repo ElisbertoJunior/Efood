@@ -50,6 +50,11 @@ export const CardMenu = styled.div`
   padding: 8px;
   color: ${colors.creamColor};
   cursor: pointer;
+
+  > img {
+    height: 167px;
+    width: 100%;
+  }
 `
 export const TitleMenu = styled.h3`
   font-weight: bold;

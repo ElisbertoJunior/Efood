@@ -74,7 +74,7 @@ const Product = ({
 
   return (
     <CardMenu>
-      <img height={167} width={304} src={image} />
+      <img src={image} />
       <TitleMenu>{title}</TitleMenu>
       <MenuDescription>{getDescription(description)}</MenuDescription>
       <Button type="linkButton">Adicionar ao carrinho</Button>

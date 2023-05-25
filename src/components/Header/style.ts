@@ -27,7 +27,7 @@ export const Text = styled.h1`
   }
 `
 export const HeaderPerfil = styled(Container)`
-  height: 163px;
+  height: 190px;
   width: 100%;
   flex-direction: row;
   align-items: center;
@@ -38,15 +38,30 @@ export const Links = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0;
+  }
 `
 export const LinkItem = styled(Link)`
   font-size: 18px;
   color: ${colors.roseColor};
   line-height: 21px;
   font-weight: bold;
-`
-export const HeaderPerfilContainer = styled.div`
-  max-width: 1024px;
-  width: 100%;
-  margin: 0 auto;
+
+  img {
+    width: 58px;
+    height: 125px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 16px;
+
+    img {
+      width: 13px;
+      height: 100px;
+    }
+  }
 `

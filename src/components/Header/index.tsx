@@ -1,12 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Container,
-  HeaderPerfil,
-  HeaderPerfilContainer,
-  LinkItem,
-  Links,
-  Text
-} from './style'
+import { Container, HeaderPerfil, LinkItem, Links, Text } from './style'
 
 import fundo from '../../images/fundo.png'
 import logo from '../../images/logo.png'
@@ -34,14 +27,14 @@ const Header = ({ type }: Props) => {
 
   return (
     <HeaderPerfil style={{ backgroundImage: `url(${fundo})` }}>
-      <HeaderPerfilContainer>
+      <div className="container">
         <nav>
           <Links>
             <li>
               <LinkItem to={'/'}>Restaurantes</LinkItem>
             </li>
             <li>
-              <img height={58} width={125} src={logo} alt="Logo Efood" />
+              <img src={logo} alt="Logo Efood" />
             </li>
             <li>
               <LinkItem onClick={() => dispatch(open())} to="#">
@@ -50,7 +43,7 @@ const Header = ({ type }: Props) => {
             </li>
           </Links>
         </nav>
-      </HeaderPerfilContainer>
+      </div>
     </HeaderPerfil>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { ProductsContent } from '../ProductsList/styles'
 
 export const ProductsContainer = styled.section`
@@ -11,6 +11,14 @@ export const MenuListContent = styled(ProductsContent)`
   grid-column-gap: 40px;
   grid-row-gap: 40px;
   margin-top: 250px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 export const Modal = styled.div`
   position: fixed;
@@ -37,7 +45,7 @@ export const Modal = styled.div`
   }
 `
 export const ModalContent = styled.div`
-  width: 1024px;
+  width: 100%;
   position: relative;
   z-index: 1;
   background-color: ${colors.roseColor};
@@ -58,6 +66,10 @@ export const ModalContent = styled.div`
     display: flex;
     gap: 24px;
 
+    @media (max-width: ${breakpoints.tablet}) {
+      flex-direction: column;
+    }
+
     div {
       display: flex;
       flex-direction: column;
@@ -68,6 +80,11 @@ export const ModalContent = styled.div`
     width: 280px;
     height: 280px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   button {
