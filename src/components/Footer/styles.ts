@@ -1,11 +1,16 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const FooterContainer = styled.footer`
   background-color: ${colors.creamColor};
   height: 300px;
   padding: 40px 0;
   text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   ul {
     display: flex;

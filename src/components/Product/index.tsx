@@ -44,7 +44,7 @@ const Product = ({
   if (type === 'home') {
     return (
       <Card>
-        <img height={217} width={472} src={image} />
+        <img src={image} />
         <CardContent>
           <HatingContent>
             <Title>{title}</Title>

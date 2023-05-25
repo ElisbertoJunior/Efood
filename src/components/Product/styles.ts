@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background-color: ${colors.cardColor};
   position: relative;
+
+  > img {
+    width: 100%;
+    height: 217px;
+  }
 `
 export const HatingContent = styled.div`
   display: flex;

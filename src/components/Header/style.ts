@@ -1,10 +1,15 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.header`
   height: 360px;
   padding: 40px 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 300px;
+    padding: 30px;
+  }
 
   display: flex;
   flex-direction: column;
@@ -16,6 +21,10 @@ export const Text = styled.h1`
   color: ${colors.roseColor};
   line-height: 42px;
   text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 28px;
+  }
 `
 export const HeaderPerfil = styled(Container)`
   height: 163px;
