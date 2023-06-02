@@ -12,17 +12,24 @@ export const Container = styled.div`
     font-weight: bold;
     line-height: 19px;
     color: ${colors.creamColor};
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   ${AddButton} {
     margin-bottom: 8px;
   }
+
+  .is-invisible {
+    display: none;
+  }
+`
+export const ButtonGroup = styled.div`
+  margin-top: 16px;
 `
 
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
-  max-width: ${(props) => props.maxWidth || 'auto'};
+  width: ${(props) => props.maxWidth || 'auto'};
   margin-bottom: 8px;
 
   label {

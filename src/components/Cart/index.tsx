@@ -6,15 +6,16 @@ import { close, remove } from '../../store/reducers/cart'
 import { priceFormat } from '../Menu'
 import { useState } from 'react'
 import Checkout from '../Checkout'
+import { MenuItem } from '../../pages/Home'
+
+export const getTotalPrice = (items: MenuItem[]) => {
+  return items.reduce((acc, totalPrice) => (acc += totalPrice.preco), 0)
+}
 
 const Cart = () => {
   const { isVisible, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
   const [isCheckout, setIsCheckout] = useState(false)
-
-  const getTotalPrice = () => {
-    return items.reduce((acc, totalPrice) => (acc += totalPrice.preco), 0)
-  }
 
   if (isCheckout) {
     return (
@@ -55,7 +56,7 @@ const Cart = () => {
             </ul>
             <Price>
               <p>Valor total</p>
-              <span>{priceFormat(getTotalPrice())}</span>
+              <span>{priceFormat(getTotalPrice(items))}</span>
             </Price>
             <Button onClick={() => setIsCheckout(true)} type="linkButton">
               Continuar com a entrega
