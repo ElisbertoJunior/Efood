@@ -12,6 +12,13 @@ export const Overlay = styled.div`
   background-color: #000;
   opacity: 0.8;
   z-index: 1;
+
+  .empty-text {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: ${colors.creamColor};
+  }
 `
 
 export const CartContainer = styled.div`
@@ -34,12 +41,16 @@ export const SideBar = styled.aside`
   width: 360px;
   padding: 32px 8px 0 8px;
 
-  ${AddButton} {
-    margin-top: 20px;
-  }
-
   ul {
     margin-bottom: 40px;
+  }
+
+  .empty-text {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: ${colors.creamColor};
+    text-align: center;
   }
 `
 export const CartItem = styled.li`
@@ -91,4 +102,5 @@ export const Price = styled.div`
   font-size: 14px;
   line-height: 16px;
   color: ${colors.creamColor};
+  margin-bottom: 20px;
 `
