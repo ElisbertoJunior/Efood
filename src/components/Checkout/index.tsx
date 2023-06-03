@@ -109,7 +109,12 @@ const Checkout = ({ onClick }: Props) => {
           <h2>Entrega</h2>
           <InputGroup>
             <label htmlFor="receiver">Quem irá receber</label>
-            <input type="text" name="receiver" id="receiver" />
+            <input
+              value={form.values.receiver}
+              type="text"
+              name="receiver"
+              id="receiver"
+            />
           </InputGroup>
           <InputGroup>
             <label htmlFor="address">Endereço</label>
