@@ -118,25 +118,45 @@ const Checkout = ({ onClick }: Props) => {
           </InputGroup>
           <InputGroup>
             <label htmlFor="address">Endereço</label>
-            <input type="text" name="address" id="address" />
+            <input
+              value={form.values.address}
+              type="text"
+              name="address"
+              id="address"
+            />
           </InputGroup>
           <InputGroup>
             <label htmlFor="city">Cidade</label>
-            <input type="text" name="city" id="city" />
+            <input value={form.values.city} type="text" name="city" id="city" />
           </InputGroup>
           <Row>
             <InputGroup>
               <label htmlFor="zipCode">CEP</label>
-              <input type="text" name="zipCode" id="zipCode" />
+              <input
+                value={form.values.zipCode}
+                type="text"
+                name="zipCode"
+                id="zipCode"
+              />
             </InputGroup>
             <InputGroup>
               <label htmlFor="houseNumber">Número</label>
-              <input type="text" name="houseNumber" id="houseNumber" />
+              <input
+                value={form.values.houseNumber}
+                type="text"
+                name="houseNumber"
+                id="houseNumber"
+              />
             </InputGroup>
           </Row>
           <InputGroup>
             <label htmlFor="complement">Complemento (opcional)</label>
-            <input type="text" name="complement" id="complement" />
+            <input
+              value={form.values.complement}
+              type="text"
+              name="complement"
+              id="complement"
+            />
           </InputGroup>
           <ButtonGroup>
             <Button onClick={() => setPayActive(true)} type={'linkButton'}>
@@ -152,12 +172,22 @@ const Checkout = ({ onClick }: Props) => {
           <h2>Pagamento - Valor a pagar {priceFormat(getTotalPrice(items))}</h2>
           <InputGroup>
             <label htmlFor="fullName">Nome no cartão</label>
-            <input type="text" name="fullName" id="fullName" />
+            <input
+              value={form.values.fullName}
+              type="text"
+              name="fullName"
+              id="fullName"
+            />
           </InputGroup>
           <Row>
             <InputGroup maxWidth="450px">
               <label htmlFor="number">Número do cartão</label>
-              <input type="text" name="number" id="number" />
+              <input
+                value={form.values.number}
+                type="text"
+                name="number"
+                id="number"
+              />
             </InputGroup>
             <InputGroup>
               <label htmlFor="code">CVV</label>
