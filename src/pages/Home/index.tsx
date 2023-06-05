@@ -1,4 +1,5 @@
 import Header from '../../components/Header'
+import Loader from '../../components/Loader'
 import ProductsList from '../../components/ProductsList'
 import { useGetRestaurantsQuery } from '../../services/api'
 
@@ -25,7 +26,7 @@ export type Restaurant = {
 const Home = () => {
   const { data: restaurants } = useGetRestaurantsQuery()
 
-  if (!restaurants) return <h3>Carregando...</h3>
+  if (!restaurants) return <Loader />
 
   return (
     <>

@@ -15,6 +15,13 @@ export const Container = styled.div`
     margin-bottom: 8px;
   }
 
+  p {
+    color: ${colors.creamColor};
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+
   ${AddButton} {
     margin-bottom: 8px;
   }
