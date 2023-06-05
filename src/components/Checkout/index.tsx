@@ -1,16 +1,19 @@
-import { useState } from 'react'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { priceFormat } from '../../utils'
-import { getTotalPrice } from '../../utils'
+import { useState } from 'react'
+
 import { usePurchaseMutation } from '../../services/api'
-import { close, clear } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
+import { close, clear, closeCheckout } from '../../store/reducers/cart'
+
+import { priceFormat, getTotalPrice } from '../../utils'
+
 import Button from '../Button'
 import Loader from '../Loader'
+
 import * as S from './styles'
 
 type Props = {
@@ -147,7 +150,7 @@ const Checkout = ({ onClick }: Props) => {
               navigate('/')
               dispatch(close())
               dispatch(clear())
-              form.initialStatus
+              dispatch(closeCheckout())
             }}
             type={'button'}
           >

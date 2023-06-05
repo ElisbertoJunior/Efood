@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, HeaderPerfil, LinkItem, Links, Text } from './style'
 
-import fundo from '../../images/fundo.png'
-import logo from '../../images/logo.png'
-import { open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
+
+import background from '../../images/fundo.png'
+import logo from '../../images/logo.png'
+
+import * as S from './style'
 
 type Props = {
-  type: 'home' | 'perfil'
+  type: 'home' | 'profile'
 }
 
 const Header = ({ type }: Props) => {
@@ -16,35 +18,35 @@ const Header = ({ type }: Props) => {
 
   if (type === 'home') {
     return (
-      <Container style={{ backgroundImage: `url(${fundo})` }}>
+      <S.Container style={{ backgroundImage: `url(${background})` }}>
         <img height={58} width={125} src={logo} alt="Logo Efood" />
-        <Text>
+        <S.Text>
           Viva experiências gastronômicas <br /> no conforto da sua casa
-        </Text>
-      </Container>
+        </S.Text>
+      </S.Container>
     )
   }
 
   return (
-    <HeaderPerfil style={{ backgroundImage: `url(${fundo})` }}>
+    <S.HeaderPerfil style={{ backgroundImage: `url(${background})` }}>
       <div className="container">
         <nav>
-          <Links>
+          <S.Links>
             <li>
-              <LinkItem to={'/'}>Restaurantes</LinkItem>
+              <S.LinkItem to={'/'}>Restaurantes</S.LinkItem>
             </li>
             <li>
               <img src={logo} alt="Logo Efood" />
             </li>
             <li>
-              <LinkItem onClick={() => dispatch(open())} to="#">
+              <S.LinkItem onClick={() => dispatch(open())} to="#">
                 {items.length} produto(s) no carrinho
-              </LinkItem>
+              </S.LinkItem>
             </li>
-          </Links>
+          </S.Links>
         </nav>
       </div>
-    </HeaderPerfil>
+    </S.HeaderPerfil>
   )
 }
 

@@ -1,8 +1,9 @@
-import { FooterContainer } from './styles'
 import logo from '../../images/logo.png'
 import insta from '../../images/insta.png'
 import face from '../../images/face.png'
 import twitter from '../../images/twitter.png'
+
+import { FooterContainer } from './styles'
 
 const Footer = () => {
   return (

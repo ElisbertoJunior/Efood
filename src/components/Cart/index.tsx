@@ -1,43 +1,51 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { CartContainer, CartItem, Overlay, Price, SideBar } from './styles'
-import Button from '../Button'
+
 import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
-import { priceFormat } from '../../utils'
-import { useState } from 'react'
+import {
+  close,
+  closeCheckout,
+  openCheckout,
+  remove
+} from '../../store/reducers/cart'
+
 import Checkout from '../Checkout'
-import { getTotalPrice } from '../../utils'
+import Button from '../Button'
+
+import { getTotalPrice, priceFormat } from '../../utils'
+
+import * as S from './styles'
 
 const Cart = () => {
-  const { isVisible, items } = useSelector((state: RootReducer) => state.cart)
+  const { isVisible, items, isCheckout } = useSelector(
+    (state: RootReducer) => state.cart
+  )
   const dispatch = useDispatch()
-  const [isCheckout, setIsCheckout] = useState(false)
 
   if (isCheckout) {
     return (
-      <CartContainer className={isVisible ? 'is-visible' : ''}>
-        <Overlay
+      <S.CartContainer className={isVisible ? 'is-visible' : ''}>
+        <S.Overlay
           onClick={() => {
             dispatch(close())
-            setIsCheckout(false)
+            dispatch(closeCheckout())
           }}
         />
-        <SideBar>
-          <Checkout onClick={() => setIsCheckout(false)} />
-        </SideBar>
-      </CartContainer>
+        <S.SideBar>
+          <Checkout onClick={() => dispatch(closeCheckout())} />
+        </S.SideBar>
+      </S.CartContainer>
     )
   }
 
   return (
-    <CartContainer className={isVisible ? 'is-visible' : ''}>
-      <Overlay onClick={() => dispatch(close())} />
-      <SideBar>
+    <S.CartContainer className={isVisible ? 'is-visible' : ''}>
+      <S.Overlay onClick={() => dispatch(close())} />
+      <S.SideBar>
         {items.length > 0 ? (
           <>
             <ul>
               {items.map((item) => (
-                <CartItem key={item.id}>
+                <S.CartItem key={item.id}>
                   <img src={item.foto} />
                   <div>
                     <h3>{item.nome}</h3>
@@ -47,16 +55,16 @@ const Cart = () => {
                     onClick={() => dispatch(remove(item.id))}
                     type="button"
                   ></button>
-                </CartItem>
+                </S.CartItem>
               ))}
             </ul>
-            <Price>
+            <S.Price>
               <p>Valor total</p>
               <span>{priceFormat(getTotalPrice(items))}</span>
-            </Price>
+            </S.Price>
             <Button
               type="button"
-              onClick={() => setIsCheckout(true)}
+              onClick={() => dispatch(openCheckout())}
               typeButton="linkButton"
             >
               Continuar com a entrega
@@ -68,8 +76,8 @@ const Cart = () => {
             com a compra
           </p>
         )}
-      </SideBar>
-    </CartContainer>
+      </S.SideBar>
+    </S.CartContainer>
   )
 }
 

@@ -3,10 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 type CartState = {
   items: MenuItem[]
   isVisible: boolean
+  isCheckout: boolean
 }
 const initialState: CartState = {
   items: [],
-  isVisible: false
+  isVisible: false,
+  isCheckout: false
 }
 
 const cartSlice = createSlice({
@@ -27,9 +29,16 @@ const cartSlice = createSlice({
     },
     clear: (state) => {
       state.items = initialState.items
+    },
+    openCheckout: (state) => {
+      state.isCheckout = true
+    },
+    closeCheckout: (state) => {
+      state.isCheckout = false
     }
   }
 })
 
-export const { add, open, close, remove, clear } = cartSlice.actions
+export const { add, open, close, remove, clear, openCheckout, closeCheckout } =
+  cartSlice.actions
 export default cartSlice.reducer

@@ -1,19 +1,15 @@
-import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  MenuDescription,
-  MenuListContent,
-  Modal,
-  ModalContent,
-  ProductsContainer,
-  TitleMenu
-} from './style'
-import Product from '../Product'
-import close from '../../images/close.png'
+import { useState } from 'react'
 
 import { add, open } from '../../store/reducers/cart'
 
 import { priceFormat } from '../../utils'
+
+import close from '../../images/close.png'
+
+import Product from '../Product'
+
+import * as S from './style'
 
 type Props = {
   menuItens: MenuItem[]
@@ -56,9 +52,9 @@ const Menu = ({ menuItens }: Props) => {
 
   return (
     <>
-      <ProductsContainer>
+      <S.ProductsContainer>
         <div className="container">
-          <MenuListContent>
+          <S.MenuListContent>
             {menuItens.map((item) => (
               <li
                 key={item.id}
@@ -85,28 +81,28 @@ const Menu = ({ menuItens }: Props) => {
                 />
               </li>
             ))}
-          </MenuListContent>
+          </S.MenuListContent>
         </div>
-      </ProductsContainer>
-      <Modal className={modal.isVisible ? 'visible' : ''}>
-        <ModalContent className="container">
+      </S.ProductsContainer>
+      <S.Modal className={modal.isVisible ? 'visible' : ''}>
+        <S.ModalContent className="container">
           <header>
             <img onClick={closeModal} src={close} />
           </header>
           <div className="content">
             <img className="imageFood" src={modal.foto} />
             <div>
-              <TitleMenu>{modal.nome}</TitleMenu>
-              <MenuDescription>{modal.descricao}</MenuDescription>
-              <MenuDescription>Serve: {modal.porcao}</MenuDescription>
+              <S.TitleMenu>{modal.nome}</S.TitleMenu>
+              <S.MenuDescription>{modal.descricao}</S.MenuDescription>
+              <S.MenuDescription>Serve: {modal.porcao}</S.MenuDescription>
               <button onClick={addCart}>
                 Adicionar ao carrinho - {priceFormat(modal.preco)}
               </button>
             </div>
           </div>
-        </ModalContent>
+        </S.ModalContent>
         <div onClick={closeModal} className="overlay"></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

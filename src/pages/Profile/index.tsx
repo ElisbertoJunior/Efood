@@ -1,21 +1,23 @@
 import { useParams } from 'react-router-dom'
+
+import { useGetRestaurantQuery } from '../../services/api'
+
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import Menu from '../../components/Menu'
-import { useGetRestaurantQuery } from '../../services/api'
 import Loader from '../../components/Loader'
 
 type ProductParams = {
   id: string
 }
 
-const Perfil = () => {
+const Profile = () => {
   const { id } = useParams() as ProductParams
   const { data: restaurant } = useGetRestaurantQuery(id)
 
   return (
     <>
-      <Header type="perfil" />
+      <Header type="profile" />
       {!restaurant ? (
         <Loader />
       ) : (
@@ -28,4 +30,4 @@ const Perfil = () => {
   )
 }
 
-export default Perfil
+export default Profile

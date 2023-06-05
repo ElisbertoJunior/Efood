@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { AddButton } from '../Button/styles'
 import close from '../../images/lixeira.png'
 
 export const Overlay = styled.div`

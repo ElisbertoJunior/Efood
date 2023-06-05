@@ -1,18 +1,7 @@
 import Button from '../Button'
 import Tag from '../Tag'
 
-import {
-  Card,
-  CardContent,
-  CardMenu,
-  Description,
-  HatingContent,
-  Infos,
-  MenuDescription,
-  Rating,
-  Title,
-  TitleMenu
-} from './styles'
+import * as S from './styles'
 
 type Props = {
   type: 'home' | 'menu'
@@ -43,17 +32,17 @@ const Product = ({
 
   if (type === 'home') {
     return (
-      <Card>
+      <S.Card>
         <img src={image} />
-        <CardContent>
-          <HatingContent>
-            <Title>{title}</Title>
-            <Rating>
-              <Title>{rating}</Title>
+        <S.CardContent>
+          <S.HatingContent>
+            <S.Title>{title}</S.Title>
+            <S.Rating>
+              <S.Title>{rating}</S.Title>
               <img src={'images/star.png'} alt="Estrela de  classificação" />
-            </Rating>
-          </HatingContent>
-          <Infos>
+            </S.Rating>
+          </S.HatingContent>
+          <S.Infos>
             {featured ? (
               <>
                 <Tag key={'destaque'}>{'Destaque da semana'}</Tag>
@@ -62,25 +51,25 @@ const Product = ({
             ) : (
               <Tag key={tipo}>{tipo}</Tag>
             )}
-          </Infos>
-          <Description>{getDescription(description)}</Description>
-          <Button type="button" typeButton="button" to={`/perfil/${id}`}>
+          </S.Infos>
+          <S.Description>{getDescription(description)}</S.Description>
+          <Button type="button" typeButton="button" to={`/profile/${id}`}>
             Saiba mais
           </Button>
-        </CardContent>
-      </Card>
+        </S.CardContent>
+      </S.Card>
     )
   }
 
   return (
-    <CardMenu>
+    <S.CardMenu>
       <img src={image} />
-      <TitleMenu>{title}</TitleMenu>
-      <MenuDescription>{getDescription(description)}</MenuDescription>
+      <S.TitleMenu>{title}</S.TitleMenu>
+      <S.MenuDescription>{getDescription(description)}</S.MenuDescription>
       <Button type="button" typeButton="linkButton">
         Adicionar ao carrinho
       </Button>
-    </CardMenu>
+    </S.CardMenu>
   )
 }
 

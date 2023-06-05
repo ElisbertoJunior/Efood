@@ -1,4 +1,3 @@
-import { Container } from './../Header/style'
 import styled from 'styled-components'
 import { colors } from '../../styles'
 

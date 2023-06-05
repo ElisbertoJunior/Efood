@@ -1,4 +1,4 @@
-import { AddButton, ButtonMore } from './styles'
+import * as S from './styles'
 
 type Props = {
   typeButton: 'button' | 'linkButton'
@@ -11,16 +11,16 @@ type Props = {
 const Button = ({ typeButton, children, to, onClick, type }: Props) => {
   if (typeButton === 'button') {
     return (
-      <ButtonMore onClick={onClick} type={'button'} to={to as string}>
+      <S.ButtonMore onClick={onClick} type={'button'} to={to as string}>
         {children}
-      </ButtonMore>
+      </S.ButtonMore>
     )
   }
 
   return (
-    <AddButton type={type} onClick={onClick}>
+    <S.AddButton type={type} onClick={onClick}>
       {children}
-    </AddButton>
+    </S.AddButton>
   )
 }
 export default Button
