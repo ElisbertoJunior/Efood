@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
+import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
-import Button from '../Button'
-import { ButtonGroup, Container, InputGroup, Row } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { priceFormat } from '../Menu'
-import { getTotalPrice } from '../Cart'
-import { useFormik } from 'formik'
+import { priceFormat } from '../../utils'
+import { getTotalPrice } from '../../utils'
 import { usePurchaseMutation } from '../../services/api'
 import { close, clear } from '../../store/reducers/cart'
+import Button from '../Button'
+import Loader from '../Loader'
+import * as S from './styles'
 
 type Props = {
   onClick: () => void
@@ -115,10 +116,12 @@ const Checkout = ({ onClick }: Props) => {
     return hasError
   }
 
+  if (isLoading) return <Loader />
+
   return (
     <>
       {isSuccess && data ? (
-        <Container>
+        <S.Container>
           <h2>Pedido realizado - {data.orderId}</h2>
           <p>
             Estamos felizes em informar que seu pedido já está em processo de
@@ -150,13 +153,13 @@ const Checkout = ({ onClick }: Props) => {
           >
             Concluir
           </Button>
-        </Container>
+        </S.Container>
       ) : (
-        <Container>
+        <S.Container>
           <form onSubmit={form.handleSubmit}>
             <div className={payActive ? 'is-invisible' : ''}>
               <h2>Entrega</h2>
-              <InputGroup>
+              <S.InputGroup>
                 <label htmlFor="receiver">Quem irá receber</label>
                 <input
                   value={form.values.receiver}
@@ -167,8 +170,8 @@ const Checkout = ({ onClick }: Props) => {
                   id="receiver"
                   className={checkInputAsError('receiver') ? 'error' : ''}
                 />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="address">Endereço</label>
                 <input
                   value={form.values.address}
@@ -179,8 +182,8 @@ const Checkout = ({ onClick }: Props) => {
                   id="address"
                   className={checkInputAsError('address') ? 'error' : ''}
                 />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="city">Cidade</label>
                 <input
                   value={form.values.city}
@@ -191,9 +194,9 @@ const Checkout = ({ onClick }: Props) => {
                   id="city"
                   className={checkInputAsError('city') ? 'error' : ''}
                 />
-              </InputGroup>
-              <Row>
-                <InputGroup>
+              </S.InputGroup>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="zipCode">CEP</label>
                   <InputMask
                     mask={'99999-999'}
@@ -205,8 +208,8 @@ const Checkout = ({ onClick }: Props) => {
                     id="zipCode"
                     className={checkInputAsError('zipCode') ? 'error' : ''}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="houseNumber">Número</label>
                   <input
                     value={form.values.houseNumber}
@@ -217,9 +220,9 @@ const Checkout = ({ onClick }: Props) => {
                     id="houseNumber"
                     className={checkInputAsError('houseNumber') ? 'error' : ''}
                   />
-                </InputGroup>
-              </Row>
-              <InputGroup>
+                </S.InputGroup>
+              </S.Row>
+              <S.InputGroup>
                 <label htmlFor="complement">Complemento (opcional)</label>
                 <input
                   value={form.values.complement}
@@ -230,8 +233,8 @@ const Checkout = ({ onClick }: Props) => {
                   id="complement"
                   className={checkInputAsError('complement') ? 'error' : ''}
                 />
-              </InputGroup>
-              <ButtonGroup>
+              </S.InputGroup>
+              <S.ButtonGroup>
                 <Button
                   type="button"
                   onClick={() => setPayActive(true)}
@@ -246,14 +249,14 @@ const Checkout = ({ onClick }: Props) => {
                 >
                   Voltar para o carrinho
                 </Button>
-              </ButtonGroup>
+              </S.ButtonGroup>
             </div>
 
             <div className={!payActive ? 'is-invisible' : ''}>
               <h2>
                 Pagamento - Valor a pagar {priceFormat(getTotalPrice(items))}
               </h2>
-              <InputGroup>
+              <S.InputGroup>
                 <label htmlFor="fullName">Nome no cartão</label>
                 <input
                   value={form.values.fullName}
@@ -264,9 +267,9 @@ const Checkout = ({ onClick }: Props) => {
                   id="fullName"
                   className={checkInputAsError('fullName') ? 'error' : ''}
                 />
-              </InputGroup>
-              <Row>
-                <InputGroup maxWidth="450px">
+              </S.InputGroup>
+              <S.Row>
+                <S.InputGroup maxWidth="450px">
                   <label htmlFor="number">Número do cartão</label>
                   <InputMask
                     mask={'9999-9999-9999-9999'}
@@ -278,8 +281,8 @@ const Checkout = ({ onClick }: Props) => {
                     id="number"
                     className={checkInputAsError('number') ? 'error' : ''}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="code">CVV</label>
                   <InputMask
                     mask={'999'}
@@ -291,10 +294,10 @@ const Checkout = ({ onClick }: Props) => {
                     id="code"
                     className={checkInputAsError('code') ? 'error' : ''}
                   />
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
+                </S.InputGroup>
+              </S.Row>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="expiresMonth">Mês de vencimento</label>
                   <InputMask
                     mask={'99'}
@@ -306,8 +309,8 @@ const Checkout = ({ onClick }: Props) => {
                     id="expiresMonth"
                     className={checkInputAsError('expiresMonth') ? 'error' : ''}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="expiresYear">Ano de vencimento</label>
                   <InputMask
                     mask={'99'}
@@ -319,9 +322,9 @@ const Checkout = ({ onClick }: Props) => {
                     id="expiresYear"
                     className={checkInputAsError('expiresMonth') ? 'error' : ''}
                   />
-                </InputGroup>
-              </Row>
-              <ButtonGroup>
+                </S.InputGroup>
+              </S.Row>
+              <S.ButtonGroup>
                 <Button
                   onClick={() => setPayActive(true)}
                   typeButton={'linkButton'}
@@ -336,10 +339,10 @@ const Checkout = ({ onClick }: Props) => {
                 >
                   Voltar para a edição de endereço
                 </Button>
-              </ButtonGroup>
+              </S.ButtonGroup>
             </div>
           </form>
-        </Container>
+        </S.Container>
       )}
     </>
   )

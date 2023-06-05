@@ -3,14 +3,10 @@ import { CartContainer, CartItem, Overlay, Price, SideBar } from './styles'
 import Button from '../Button'
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
-import { priceFormat } from '../Menu'
+import { priceFormat } from '../../utils'
 import { useState } from 'react'
 import Checkout from '../Checkout'
-import { MenuItem } from '../../pages/Home'
-
-export const getTotalPrice = (items: MenuItem[]) => {
-  return items.reduce((acc, totalPrice) => (acc += totalPrice.preco), 0)
-}
+import { getTotalPrice } from '../../utils'
 
 const Cart = () => {
   const { isVisible, items } = useSelector((state: RootReducer) => state.cart)

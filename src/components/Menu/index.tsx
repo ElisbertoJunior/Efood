@@ -10,8 +10,10 @@ import {
 } from './style'
 import Product from '../Product'
 import close from '../../images/close.png'
-import { MenuItem } from '../../pages/Home'
+
 import { add, open } from '../../store/reducers/cart'
+
+import { priceFormat } from '../../utils'
 
 type Props = {
   menuItens: MenuItem[]
@@ -19,13 +21,6 @@ type Props = {
 
 interface ModalState extends MenuItem {
   isVisible: boolean
-}
-
-export const priceFormat = (price = 0) => {
-  return new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(price)
 }
 
 const Menu = ({ menuItens }: Props) => {

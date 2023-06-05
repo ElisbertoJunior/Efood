@@ -5,12 +5,13 @@ import Menu from '../../components/Menu'
 import { useGetRestaurantQuery } from '../../services/api'
 import Loader from '../../components/Loader'
 
+type ProductParams = {
+  id: string
+}
+
 const Perfil = () => {
-  const { id } = useParams()
-
-  const { data: restaurant } = useGetRestaurantQuery(id!)
-
-  //if (!restaurant) return <Loader />
+  const { id } = useParams() as ProductParams
+  const { data: restaurant } = useGetRestaurantQuery(id)
 
   return (
     <>
