@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
 import Button from '../Button'
 import { ButtonGroup, Container, InputGroup, Row } from './styles'
 import { useSelector } from 'react-redux'
@@ -102,7 +103,13 @@ const Checkout = ({ onClick }: Props) => {
     }
   })
 
-  c
+  const checkInputAsError = (fieldName: string) => {
+    const isChanged = fieldName in form.touched
+    const isIvalid = fieldName in form.errors
+    const hasError = isChanged && isIvalid
+
+    return hasError
+  }
 
   return (
     <Container>
@@ -118,6 +125,7 @@ const Checkout = ({ onClick }: Props) => {
               type="text"
               name="receiver"
               id="receiver"
+              className={checkInputAsError('receiver') ? 'error' : ''}
             />
           </InputGroup>
           <InputGroup>
@@ -129,6 +137,7 @@ const Checkout = ({ onClick }: Props) => {
               type="text"
               name="address"
               id="address"
+              className={checkInputAsError('address') ? 'error' : ''}
             />
           </InputGroup>
           <InputGroup>
@@ -140,18 +149,21 @@ const Checkout = ({ onClick }: Props) => {
               type="text"
               name="city"
               id="city"
+              className={checkInputAsError('city') ? 'error' : ''}
             />
           </InputGroup>
           <Row>
             <InputGroup>
               <label htmlFor="zipCode">CEP</label>
-              <input
+              <InputMask
+                mask={'99999-999'}
                 value={form.values.zipCode}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type="text"
                 name="zipCode"
                 id="zipCode"
+                className={checkInputAsError('zipCode') ? 'error' : ''}
               />
             </InputGroup>
             <InputGroup>
@@ -163,6 +175,7 @@ const Checkout = ({ onClick }: Props) => {
                 type="text"
                 name="houseNumber"
                 id="houseNumber"
+                className={checkInputAsError('houseNumber') ? 'error' : ''}
               />
             </InputGroup>
           </Row>
@@ -175,6 +188,7 @@ const Checkout = ({ onClick }: Props) => {
               type="text"
               name="complement"
               id="complement"
+              className={checkInputAsError('complement') ? 'error' : ''}
             />
           </InputGroup>
           <ButtonGroup>
@@ -202,53 +216,62 @@ const Checkout = ({ onClick }: Props) => {
               type="text"
               name="fullName"
               id="fullName"
+              className={checkInputAsError('fullName') ? 'error' : ''}
             />
           </InputGroup>
           <Row>
             <InputGroup maxWidth="450px">
               <label htmlFor="number">Número do cartão</label>
-              <input
+              <InputMask
+                mask={'9999-9999-9999-9999'}
                 value={form.values.number}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type="text"
                 name="number"
                 id="number"
+                className={checkInputAsError('number') ? 'error' : ''}
               />
             </InputGroup>
             <InputGroup>
               <label htmlFor="code">CVV</label>
-              <input
+              <InputMask
+                mask={'999'}
                 value={form.values.code}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type="text"
                 name="code"
                 id="code"
+                className={checkInputAsError('code') ? 'error' : ''}
               />
             </InputGroup>
           </Row>
           <Row>
             <InputGroup>
               <label htmlFor="expiresMonth">Mês de vencimento</label>
-              <input
+              <InputMask
+                mask={'99'}
                 value={form.values.expiresMonth}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type="text"
                 name="expiresMonth"
                 id="expiresMonth"
+                className={checkInputAsError('expiresMonth') ? 'error' : ''}
               />
             </InputGroup>
             <InputGroup>
               <label htmlFor="expiresYear">Ano de vencimento</label>
-              <input
+              <InputMask
+                mask={'99'}
                 value={form.values.expiresYear}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type="text"
                 name="expiresYear"
                 id="expiresYear"
+                className={checkInputAsError('expiresMonth') ? 'error' : ''}
               />
             </InputGroup>
           </Row>
