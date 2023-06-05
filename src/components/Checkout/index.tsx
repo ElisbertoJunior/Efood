@@ -102,15 +102,19 @@ const Checkout = ({ onClick }: Props) => {
     }
   })
 
+  c
+
   return (
     <Container>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={form.handleSubmit}>
         <div className={payActive ? 'is-invisible' : ''}>
           <h2>Entrega</h2>
           <InputGroup>
             <label htmlFor="receiver">Quem irá receber</label>
             <input
               value={form.values.receiver}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
               type="text"
               name="receiver"
               id="receiver"
@@ -120,6 +124,8 @@ const Checkout = ({ onClick }: Props) => {
             <label htmlFor="address">Endereço</label>
             <input
               value={form.values.address}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
               type="text"
               name="address"
               id="address"
@@ -127,13 +133,22 @@ const Checkout = ({ onClick }: Props) => {
           </InputGroup>
           <InputGroup>
             <label htmlFor="city">Cidade</label>
-            <input value={form.values.city} type="text" name="city" id="city" />
+            <input
+              value={form.values.city}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              type="text"
+              name="city"
+              id="city"
+            />
           </InputGroup>
           <Row>
             <InputGroup>
               <label htmlFor="zipCode">CEP</label>
               <input
                 value={form.values.zipCode}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 type="text"
                 name="zipCode"
                 id="zipCode"
@@ -143,6 +158,8 @@ const Checkout = ({ onClick }: Props) => {
               <label htmlFor="houseNumber">Número</label>
               <input
                 value={form.values.houseNumber}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 type="text"
                 name="houseNumber"
                 id="houseNumber"
@@ -153,16 +170,22 @@ const Checkout = ({ onClick }: Props) => {
             <label htmlFor="complement">Complemento (opcional)</label>
             <input
               value={form.values.complement}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
               type="text"
               name="complement"
               id="complement"
             />
           </InputGroup>
           <ButtonGroup>
-            <Button onClick={() => setPayActive(true)} type={'linkButton'}>
+            <Button
+              type="button"
+              onClick={() => setPayActive(true)}
+              typeButton={'linkButton'}
+            >
               Continuar com o pagamento
             </Button>
-            <Button onClick={onClick} type={'linkButton'}>
+            <Button onClick={onClick} typeButton={'linkButton'} type="button">
               Voltar para o carrinho
             </Button>
           </ButtonGroup>
@@ -174,6 +197,8 @@ const Checkout = ({ onClick }: Props) => {
             <label htmlFor="fullName">Nome no cartão</label>
             <input
               value={form.values.fullName}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
               type="text"
               name="fullName"
               id="fullName"
@@ -184,6 +209,8 @@ const Checkout = ({ onClick }: Props) => {
               <label htmlFor="number">Número do cartão</label>
               <input
                 value={form.values.number}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 type="text"
                 name="number"
                 id="number"
@@ -193,6 +220,8 @@ const Checkout = ({ onClick }: Props) => {
               <label htmlFor="code">CVV</label>
               <input
                 value={form.values.code}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
                 type="text"
                 name="code"
                 id="code"
@@ -202,18 +231,40 @@ const Checkout = ({ onClick }: Props) => {
           <Row>
             <InputGroup>
               <label htmlFor="expiresMonth">Mês de vencimento</label>
-              <input type="text" name="expiresMonth" id="expiresMonth" />
+              <input
+                value={form.values.expiresMonth}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                type="text"
+                name="expiresMonth"
+                id="expiresMonth"
+              />
             </InputGroup>
             <InputGroup>
               <label htmlFor="expiresYear">Ano de vencimento</label>
-              <input type="text" name="expiresYear" id="expiresYear" />
+              <input
+                value={form.values.expiresYear}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                type="text"
+                name="expiresYear"
+                id="expiresYear"
+              />
             </InputGroup>
           </Row>
           <ButtonGroup>
-            <Button onClick={() => setPayActive(true)} type={'linkButton'}>
+            <Button
+              onClick={() => setPayActive(true)}
+              typeButton={'linkButton'}
+              type="submit"
+            >
               Finalizar pagamento
             </Button>
-            <Button onClick={() => setPayActive(false)} type={'linkButton'}>
+            <Button
+              onClick={() => setPayActive(false)}
+              typeButton={'linkButton'}
+              type="button"
+            >
               Voltar para a edição de endereço
             </Button>
           </ButtonGroup>

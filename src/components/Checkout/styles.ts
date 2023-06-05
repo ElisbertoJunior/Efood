@@ -52,6 +52,10 @@ export const InputGroup = styled.div<InputGroupProps>`
 
     background-color: ${colors.creamColor};
     border: 1px solid ${colors.creamColor};
+
+    &.error {
+      border: 2px solid red;
+    }
   }
 `
 export const Row = styled.div`

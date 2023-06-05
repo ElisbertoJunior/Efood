@@ -64,7 +64,7 @@ const Product = ({
             )}
           </Infos>
           <Description>{getDescription(description)}</Description>
-          <Button type="button" to={`/perfil/${id}`}>
+          <Button type="button" typeButton="button" to={`/perfil/${id}`}>
             Saiba mais
           </Button>
         </CardContent>
@@ -77,7 +77,9 @@ const Product = ({
       <img src={image} />
       <TitleMenu>{title}</TitleMenu>
       <MenuDescription>{getDescription(description)}</MenuDescription>
-      <Button type="linkButton">Adicionar ao carrinho</Button>
+      <Button type="button" typeButton="linkButton">
+        Adicionar ao carrinho
+      </Button>
     </CardMenu>
   )
 }

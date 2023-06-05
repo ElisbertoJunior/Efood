@@ -58,7 +58,11 @@ const Cart = () => {
               <p>Valor total</p>
               <span>{priceFormat(getTotalPrice(items))}</span>
             </Price>
-            <Button onClick={() => setIsCheckout(true)} type="linkButton">
+            <Button
+              type="button"
+              onClick={() => setIsCheckout(true)}
+              typeButton="linkButton"
+            >
               Continuar com a entrega
             </Button>
           </>

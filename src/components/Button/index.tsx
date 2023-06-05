@@ -1,14 +1,15 @@
 import { AddButton, ButtonMore } from './styles'
 
 type Props = {
-  type: 'button' | 'linkButton'
+  typeButton: 'button' | 'linkButton'
+  type: 'button' | 'submit'
   children: string | number
   to?: string
   onClick?: () => void
 }
 
-const Button = ({ type, children, to, onClick }: Props) => {
-  if (type === 'button') {
+const Button = ({ typeButton, children, to, onClick, type }: Props) => {
+  if (typeButton === 'button') {
     return (
       <ButtonMore onClick={onClick} type={'button'} to={to as string}>
         {children}
@@ -16,6 +17,10 @@ const Button = ({ type, children, to, onClick }: Props) => {
     )
   }
 
-  return <AddButton onClick={onClick}>{children}</AddButton>
+  return (
+    <AddButton type={type} onClick={onClick}>
+      {children}
+    </AddButton>
+  )
 }
 export default Button
