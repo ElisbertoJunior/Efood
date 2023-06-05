@@ -191,7 +191,12 @@ const Checkout = ({ onClick }: Props) => {
             </InputGroup>
             <InputGroup>
               <label htmlFor="code">CVV</label>
-              <input type="text" name="code" id="code" />
+              <input
+                value={form.values.code}
+                type="text"
+                name="code"
+                id="code"
+              />
             </InputGroup>
           </Row>
           <Row>
